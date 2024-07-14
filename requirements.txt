@@ -1,0 +1,5 @@
+typing-extensions; python_version < '3.11'
+pypng
+Pillow
+pygltflib
+pyyaml

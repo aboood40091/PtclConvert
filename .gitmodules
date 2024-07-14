@@ -1,0 +1,4 @@
+[submodule "ninTexUtils"]
+	path = ninTexUtils
+	url = https://github.com/aboood40091/ninTexUtils.git
+	branch = python
