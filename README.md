@@ -24,5 +24,7 @@ This tool requires the `gshCompile` shader compiler **in some special cases only
 * Cafe SDK: `system/bin/win32/gshCompile.exe` or `system/bin/win64/gshCompile.exe`  
 * NintendoWare for Cafe: `Tool/EffectMaker/Converter/shader/gshCompile.exe`  
 
-### Cases where the shader compiler is required
+The path to the `gshCompile.exe` file should be set in the `GSH_COMPILE_PATH` variable at the beginning of `main.py`.  
+
+### Cases where the shader compiler is required:
 The shader compiler is only required when doing YAML to PTCL conversion, when any emitter uses new graphics-related features that were not used previously by other emitters and the required shader does not already exist in the `shaderBinPath` path specified in the project YAML. In that case, the tool tries to compile new shaders.
