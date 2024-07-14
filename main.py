@@ -6118,16 +6118,16 @@ class nw__eft__EmitterData:
                         "value": self.isVolumeLatitudeEnabled.name
                     },
                     "sweepStart": {
-                        "description": "For shape types which can use arcs, this is the arc start angle, in SIGNED 32-bit Binary Angular Measurement (BAM) where (+/-)0x40000000 = (+/-)90 degrees.",
+                        "description": "For shape types which can use arcs, this is the arc start angle, in SIGNED 32-bit Binary Angular Measurement (BAM) where (+/-)0x40000000 = (+/-)90 degrees.\n" \
+                                       "Ignored if `sweepStartRandom` is True.",
                         "value": S32ToHexString(self.volumeSweepStart)
                     },
                     "sweepStartRandom": {
-                        "description": "For shape types which can use arcs, randomly choose arc start angle? If True, the value of `sweepParam` is ignored.",
+                        "description": "For shape types which can use arcs, randomly choose arc start angle? If True, the value of `sweepStart` is ignored.",
                         "value": self.volumeSweepStartRandom
                     },
                     "sweepParam": {
-                        "description": "For shape types which can use arcs, this is the arc central angle, in UNSIGNED 32-bit Binary Angular Measurement (BAM) where 0x40000000 = 90 degrees. Positive values only!\n" \
-                                       "Ignored if `sweepStartRandom` is True.",
+                        "description": "For shape types which can use arcs, this is the arc central angle, in UNSIGNED 32-bit Binary Angular Measurement (BAM) where 0x40000000 = 90 degrees. Positive values only!",
                         "value": U32ToHexString(self.volumeSweepParam)
                     },
                     "latitude": {
