@@ -5333,6 +5333,13 @@ class nw__eft__EmitterData:
 
         assert 0 <= self.alphaSection1 <= 100
         assert 0 <= self.alphaSection2 <= 100
+
+        if self.alphaSection1 == 0:
+            assert self.diffAlpha21 == 0.0
+        
+        if self.alphaSection2 == 100:
+            assert self.diffAlpha32 == 0.0
+
         assert 0 <= self.scaleSection1 <= 100 or self.scaleSection1 == -127
         assert 0 <= self.scaleSection2 <= 100
 
@@ -5352,6 +5359,14 @@ class nw__eft__EmitterData:
 
         # Particle scale 3-value 4-key animation: scale3 - scale2 (%)
         self.diffScale32 = struct.unpack_from(VEC2_FMT, data, pos); pos += VEC2_SIZE
+
+        if self.scaleSection1 == 0:
+            assert self.diffScale21[0] == 0.0 and \
+                   self.diffScale21[1] == 0.0
+        
+        if self.scaleSection2 == 100:
+            assert self.diffScale32[0] == 0.0 and \
+                   self.diffScale32[1] == 0.0
 
         # Particle rotation: Initial rotation
         initRotX: float
@@ -5713,6 +5728,22 @@ class nw__eft__EmitterData:
             assert 0.0 <= initRotRandZ <= MATH_PI_2
             assert -MATH_PI <= rotVelZ <= MATH_PI
             assert 0.0 <= rotVelRandZ <= MATH_PI_2
+
+        if self.alphaSection1 == 0:
+            if self.diffAlpha21 != 0.0:
+                self.initAlpha += self.diffAlpha21
+                assert 0.0 <= self.initAlpha <= 1.0
+                self.diffAlpha21 = 0.0
+
+        if self.alphaSection2 == 100:
+            self.diffAlpha32 = 0.0
+
+        if self.scaleSection1 == 0:
+            self.initScale = (self.initScale[0] + self.diffScale21[0], self.initScale[1] + self.diffScale21[1])
+            self.diffScale21 = (0.0, 0.0)
+
+        if self.scaleSection2 == 100:
+            self.diffScale32 = (0.0, 0.0)
 
         ret = bytearray().join((
             ### CommonEmitterData ###
