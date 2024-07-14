@@ -6117,6 +6117,10 @@ class nw__eft__EmitterData:
                                        "Latitude: The arc is defined along the latitude. If this type is chosen, the values of `latitude` & `latitudeDir` are respected and the values of `sweepParam` & `sweepStart`/`sweepStartRandom` are ignored.",
                         "value": self.isVolumeLatitudeEnabled.name
                     },
+                    "sweepParam": {
+                        "description": "For shape types which can use arcs, this is the arc central angle, in UNSIGNED 32-bit Binary Angular Measurement (BAM) where 0x40000000 = 90 degrees. Positive values only!",
+                        "value": U32ToHexString(self.volumeSweepParam)
+                    },
                     "sweepStart": {
                         "description": "For shape types which can use arcs, this is the arc start angle, in SIGNED 32-bit Binary Angular Measurement (BAM) where (+/-)0x40000000 = (+/-)90 degrees.\n" \
                                        "Ignored if `sweepStartRandom` is True.",
@@ -6125,10 +6129,6 @@ class nw__eft__EmitterData:
                     "sweepStartRandom": {
                         "description": "For shape types which can use arcs, randomly choose arc start angle? If True, the value of `sweepStart` is ignored.",
                         "value": self.volumeSweepStartRandom
-                    },
-                    "sweepParam": {
-                        "description": "For shape types which can use arcs, this is the arc central angle, in UNSIGNED 32-bit Binary Angular Measurement (BAM) where 0x40000000 = 90 degrees. Positive values only!",
-                        "value": U32ToHexString(self.volumeSweepParam)
                     },
                     "latitude": {
                         "description": "For the `Sphere` and `FillSphere` shape types, minimum latitude at which the particle is spawned, in radians.\n" \
